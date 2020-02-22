@@ -1,43 +1,17 @@
 <?php
-    include_once('functions.php');
+    include_once('models/auth.model.php');
+    include_once('models/validation.model.php');
+    include_once('models/db.model.php');
+    include_once('models/error.model.php');
+    
     $is_auth = check_auth();
     $id = $_GET['id'] ?? null;
 
-    $error = validate_id($id);
-    if ($error != null) {
-        echo $error;
-        exit();
-    }
+    validate_id($id);
+    check_error();
 
-    $query = db("SELECT * FROM posts WHERE id_post=:id", ['id' => $id]);
-    $post = $query->fetch();
+    $post = db_get_single_post($id);
+    check_error();
 
-    if (!$post) {
-        echo '404. Такой статьи нет';
-        exit();
-    }
+    include 'views/post.view.php';
 ?>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/post.css">
-    <title><?=$post['title']?> | Блог на PHP</title>
-</head>
-<body>
-    <header class="header">
-        <h2 class="header__title"><?=$post['title']?></h2>
-        <div class="header__btns">
-            <a href="index.php">На главную</a>
-            <? if ($is_auth) : ?>
-                <a href="edit-post.php?id=<?=$id?>">Редактировать</a>
-            <? endif; ?>
-        </div>
-    </header>
-    <h4><?=$post['dt']?></h4>
-    <?=nl2br($post['content'])?>
-</body>
-</html>
