@@ -4,7 +4,6 @@ function generate_hash($pass) {
 }
 
 function check_auth() {
-    session_start();
     if (!(isset($_SESSION['is_auth']) && $_SESSION['is_auth'])) { 
         if (!(isset($_COOKIE['login'])
             && $_COOKIE['login'] == 'root'

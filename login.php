@@ -1,6 +1,6 @@
 <?php
 include_once('models/auth.model.php');
-
+include_once('models/template.model.php');
 session_start();
 
 if (isset($_SESSION['is_auth'])) {
@@ -36,4 +36,8 @@ if (count($_POST) > 0) { // POST request
     }
 }
 
-include 'views/login.view.php';
+$content = slot('login', [
+    'error' => $error
+]);
+
+echo template('Авторизация | Блог на PHP', 'login',  $content);

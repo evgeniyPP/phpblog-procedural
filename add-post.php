@@ -3,6 +3,8 @@ include_once('models/auth.model.php');
 include_once('models/validation.model.php');
 include_once('models/db.model.php');
 include_once('models/error.model.php');
+include_once('models/template.model.php');
+session_start();
 
 if (!check_auth()) {
     $_SESSION['return_url'] = "add-post.php";
@@ -27,4 +29,10 @@ if (!count($_POST) > 0) { // GET request
     }
 }
 
-include 'views/add-post.view.php';
+$content = slot('add-post', [
+    'error' => $error,
+    'title' => $title,
+    'content' => $content
+]);
+
+echo template('Добавить пост | Блог на PHP', 'add-edit',  $content);

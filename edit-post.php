@@ -3,6 +3,8 @@ include_once('models/auth.model.php');
 include_once('models/validation.model.php');
 include_once('models/db.model.php');
 include_once('models/error.model.php');
+include_once('models/template.model.php');
+session_start();
 
 $id = $_GET['id'] ?? null;
 
@@ -30,4 +32,11 @@ if (!count($_POST) > 0) { // GET request
     }
 }
 
-include 'views/edit-post.view.php';
+$content = slot('edit-post', [
+    'id' => $id,
+    'error' => $error,
+    'title' => $post['title'] ?? $title,
+    'content' => $post['content'] ?? $content
+]);
+
+echo template('Редактировать пост | Блог на PHP', 'add-edit',  $content);
