@@ -22,7 +22,7 @@ if (!count($_POST) > 0) { // GET request
     $error = error();
     if ($error == null) {
         db_update_post($title, $content, $id);
-        header("Location: index.php&c=post&id=$id");
+        header("Location: index.php?c=post&id=$id");
         exit();  
     }
 }

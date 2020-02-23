@@ -13,7 +13,8 @@ function error($input = null) {
 function check_error() {
     $error = error();
     if ($error) {
-        echo $error;
+        $_SESSION['error'] = $error;
+        header("Location: index.php?c=404");
         exit();
     }
 }

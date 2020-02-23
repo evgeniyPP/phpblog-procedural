@@ -35,7 +35,7 @@ function db_get_single_post($id) {
     $post = $query->fetch();
 
     if (!$post) {
-        error('404. Такой статьи нет');
+        error('Такой статьи нет');
     }
 
     return $post;
