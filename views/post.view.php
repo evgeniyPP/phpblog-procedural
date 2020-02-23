@@ -3,7 +3,7 @@
     <div class="header__btns">
         <a href="index.php">На главную</a>
         <? if ($is_auth) : ?>
-            <a href="edit-post.php?id=<?=$id?>">Редактировать</a>
+            <a href="index.php?c=edit-post&id=<?=$id?>">Редактировать</a>
         <? endif; ?>
     </div>
 </header>

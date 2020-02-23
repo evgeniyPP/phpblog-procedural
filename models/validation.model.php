@@ -18,3 +18,12 @@ function validate_id($id) {
 
     return true;
 }
+
+function validate_controller($controller) {
+    if (!preg_match('/^[\w-]*$/', $controller) || 
+        !file_exists("controllers/$controller.php")) {
+        error('Ошибка 404. Некорректный адрес');
+    }
+    
+    return true;
+}

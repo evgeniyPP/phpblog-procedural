@@ -1,14 +1,9 @@
 <?php
-include_once('models/auth.model.php');
-include_once('models/validation.model.php');
 include_once('models/db.model.php');
-include_once('models/error.model.php');
-include_once('models/template.model.php');
-session_start();
 
 if (!check_auth()) {
-    $_SESSION['return_url'] = "add-post.php";
-    header("Location: login.php");
+    $_SESSION['return_url'] = "add-post";
+    header("Location: index.php?c=login");
     exit();
 }
 
@@ -24,7 +19,7 @@ if (!count($_POST) > 0) { // GET request
     $error = error();
     if ($error == null) {
         $id = db_add_post($title, $content);
-        header("Location: post.php?id=$id");
+        header("Location: index.php?c=post&id=$id");
         exit();
     }
 }

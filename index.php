@@ -1,17 +1,11 @@
 <?php
-include_once('models/auth.model.php');
-include_once('models/db.model.php');
-include_once('models/template.model.php');
 session_start();
+include_once('models/auth.model.php');
+include_once('models/template.model.php');
+include_once('models/validation.model.php');
 
-$is_auth = check_auth();
-$log_btn = !$is_auth ? 'Войти' : 'Выйти';
-$posts = db_get_all_posts();
+$controller = $_GET['c'] ?? 'home';
+validate_controller($controller);
+check_error();
 
-$content = slot('index', [
-    'is_auth' => $is_auth,
-    'log_btn' => $log_btn,
-    'posts' => $posts
-]);
-
-echo template('Блог на PHP', 'index', $content);
+include_once("controllers/$controller.php");

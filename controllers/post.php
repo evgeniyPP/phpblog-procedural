@@ -1,10 +1,5 @@
 <?php
-include_once('models/auth.model.php');
-include_once('models/validation.model.php');
 include_once('models/db.model.php');
-include_once('models/error.model.php');
-include_once('models/template.model.php');
-session_start();
 
 $is_auth = check_auth();
 $id = $_GET['id'] ?? null;
