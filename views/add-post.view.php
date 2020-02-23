@@ -1,7 +1,7 @@
 <header class="header">
     <h1 class="header__title">Добавить пост</h1>
     <div class="header__btns">
-        <a href="index.php">Вернуться на главную</a>
+        <a href="<?=ROOT?>">Вернуться на главную</a>
     </div>
 </header>
 <? if ($error) : ?>

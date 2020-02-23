@@ -12,7 +12,7 @@ function validate_post($title, $content) {
 function validate_id($id) {
     if ($id == null) {
         error('Нет id');
-    } elseif (!preg_match('/^\d*$/', $id)) {
+    } elseif (!preg_match('/^\d+$/', $id)) {
         error('Некорректный id');
     }
 
@@ -20,7 +20,7 @@ function validate_id($id) {
 }
 
 function validate_controller($controller) {
-    if (!preg_match('/^[\w-]*$/', $controller) || 
+    if (!preg_match('/^[\w-]+$/', $controller) || 
         !file_exists("controllers/$controller.php")) {
         error('Некорректный адрес');
     }

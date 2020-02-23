@@ -2,7 +2,7 @@
 include_once('models/db.model.php');
 
 $is_auth = check_auth();
-$id = $_GET['id'] ?? null;
+$id = $params[1] ?? null;
 
 validate_id($id);
 check_error();

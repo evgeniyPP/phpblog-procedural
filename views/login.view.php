@@ -13,6 +13,6 @@
     </label>
     <div class="form__btns">
         <button type="submit" class="btns__submit">Войти</button>
-        <a href="index.php" class="btns__toindex">На главную</a></button>
+        <a href="<?=ROOT?>" class="btns__toindex">На главную</a></button>
     </div>
 </form>

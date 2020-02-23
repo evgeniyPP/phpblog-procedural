@@ -3,7 +3,7 @@ include_once('models/db.model.php');
 
 if (!check_auth()) {
     $_SESSION['return_url'] = "add-post";
-    header("Location: index.php?c=login");
+    header('Location: ' . ROOT . "login");
     exit();
 }
 
@@ -19,7 +19,7 @@ if (!count($_POST) > 0) { // GET request
     $error = error();
     if ($error == null) {
         $id = db_add_post($title, $content);
-        header("Location: index.php?c=post&id=$id");
+        header('Location: ' . ROOT . "post/$id");
         exit();
     }
 }

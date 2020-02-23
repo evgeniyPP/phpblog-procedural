@@ -28,10 +28,10 @@ if (count($_POST) > 0) { // POST request
         if ($hasReturnUrl) {
             $return_url = $_SESSION['return_url'];
             unset($_SESSION['return_url']);
-            header("Location: index.php?c=$return_url");
+            header('Location: ' . ROOT . "$return_url");
             exit();
         } else {
-            header("Location: index.php");
+            header('Location: ' . ROOT);
             exit();
         }
     } else {

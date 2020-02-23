@@ -1,11 +1,11 @@
 <?php
 include_once('models/db.model.php');
 
-$id = $_GET['id'] ?? null;
+$id = $params[1] ?? null;
 
 if (!check_auth()) {
-    $_SESSION['return_url'] = "edit-post&id=$id";
-    header("Location: index.php?c=login");
+    $_SESSION['return_url'] = "edit-post/$id";
+    header('Location: ' . ROOT . "login");
     exit();
 }
 
@@ -22,7 +22,7 @@ if (!count($_POST) > 0) { // GET request
     $error = error();
     if ($error == null) {
         db_update_post($title, $content, $id);
-        header("Location: index.php?c=post&id=$id");
+        header('Location: ' . ROOT . "post/$id");
         exit();  
     }
 }

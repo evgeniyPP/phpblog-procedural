@@ -1,7 +1,7 @@
 <header class="header">
     <h1 class="header__title">Редактировать пост</h1>
     <div class="header__btns">
-        <a href="index.php?c=post&id=<?=$id?>">Вернуться к посту</a>
+        <a href="<?=ROOT?>post/<?=$id?>">Вернуться к посту</a>
     </div>
 </header>
 <? if ($error) : ?>

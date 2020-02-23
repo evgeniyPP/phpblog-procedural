@@ -14,7 +14,8 @@ function check_error() {
     $error = error();
     if ($error) {
         $_SESSION['error'] = $error;
-        header("Location: index.php?c=404");
+        header("HTTP/1.1 404 Not Found");
+        header('Location: ' . ROOT . '404');
         exit();
     }
 }
