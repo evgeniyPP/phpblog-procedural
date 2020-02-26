@@ -7,7 +7,7 @@ if (isset($_SESSION['error'])) {
 }
 
 $content = slot('404', [
-    'error' => $error
+    'error' => $error,
 ]);
 
-echo template('Страница не найдена | Блог на PHP', '404',  $content);
+echo template('Страница не найдена | Блог на PHP', '404', $content);

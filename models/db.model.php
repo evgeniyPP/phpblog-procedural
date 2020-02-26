@@ -1,7 +1,8 @@
 <?php
-include_once('error.model.php');
+include_once 'error.model.php';
 
-function get_db() {
+function get_db()
+{
     static $db;
     if ($db === null) {
         $db = new PDO('mysql:host=localhost;dbname=lavrik_blog', 'root', '');
@@ -10,7 +11,8 @@ function get_db() {
     return $db;
 }
 
-function db($sql, $masks = []) {
+function db($sql, $masks = [])
+{
     $db = get_db();
     $query = $db->prepare($sql);
     $query->execute($masks);
@@ -23,14 +25,16 @@ function db($sql, $masks = []) {
     return $query;
 }
 
-function db_get_all_posts() {
+function db_get_all_posts()
+{
     $query = db("SELECT * FROM posts ORDER BY dt DESC");
     $posts = $query->fetchAll();
 
     return $posts;
 }
 
-function db_get_single_post($id) {
+function db_get_single_post($id)
+{
     $query = db("SELECT * FROM posts WHERE id_post=:id", ['id' => $id]);
     $post = $query->fetch();
 
@@ -41,7 +45,8 @@ function db_get_single_post($id) {
     return $post;
 }
 
-function db_add_post($title, $content) {
+function db_add_post($title, $content)
+{
     db(
         "INSERT INTO posts (title, content) VALUES (:title, :content)",
         ['title' => $title, 'content' => $content]
@@ -50,7 +55,8 @@ function db_add_post($title, $content) {
     return $db->lastInsertId();
 }
 
-function db_update_post($title, $content, $id) {
+function db_update_post($title, $content, $id)
+{
     db(
         "UPDATE posts SET title=:title, content=:content WHERE id_post=:id",
         ['title' => $title, 'content' => $content, 'id' => $id]

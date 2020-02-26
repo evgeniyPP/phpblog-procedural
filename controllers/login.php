@@ -40,7 +40,7 @@ if (count($_POST) > 0) { // POST request
 }
 
 $content = slot('login', [
-    'error' => $error
+    'error' => $error,
 ]);
 
-echo template('Авторизация | Блог на PHP', 'login',  $content);
+echo template('Авторизация | Блог на PHP', 'login', $content);

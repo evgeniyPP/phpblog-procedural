@@ -1,5 +1,5 @@
 <?php
-include_once('models/db.model.php');
+include_once 'models/db.model.php';
 
 if (!check_auth()) {
     $_SESSION['return_url'] = "add-post";
@@ -27,7 +27,7 @@ if (!count($_POST) > 0) { // GET request
 $content = slot('add-post', [
     'error' => $error,
     'title' => $title,
-    'content' => $content
+    'content' => $content,
 ]);
 
-echo template('Добавить пост | Блог на PHP', 'add-edit',  $content);
+echo template('Добавить пост | Блог на PHP', 'add-edit', $content);

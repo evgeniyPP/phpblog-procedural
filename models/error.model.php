@@ -1,5 +1,6 @@
 <?php
-function error($input = null) {
+function error($input = null)
+{
     static $error;
 
     if ($input) {
@@ -10,7 +11,8 @@ function error($input = null) {
     return $error;
 }
 
-function check_error() {
+function check_error()
+{
     $error = error();
     if ($error) {
         $_SESSION['error'] = $error;

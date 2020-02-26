@@ -1,7 +1,7 @@
 <form method="post">
-    <? if ($error) : ?>
-        <p class="error"><?=$error?></p>
-    <? endif; ?>
+    <?if ($error): ?>
+    <p class="error"><?=$error?></p>
+    <?endif;?>
     <label for="login">Логин</label>
     <input type="text" name="login">
     <label for="password">Пароль</label>

@@ -4,9 +4,9 @@
         <a href="<?=ROOT?>post/<?=$id?>">Вернуться к посту</a>
     </div>
 </header>
-<? if ($error) : ?>
-    <p class="error"><?=$error?></p>
-<? endif; ?>
+<?if ($error): ?>
+<p class="error"><?=$error?></p>
+<?endif;?>
 <form method="post">
     <label for="title">Название поста:</label>
     <input class="post__title" type="text" name="title" value="<?=$title?>">

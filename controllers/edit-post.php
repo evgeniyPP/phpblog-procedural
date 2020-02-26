@@ -1,5 +1,5 @@
 <?php
-include_once('models/db.model.php');
+include_once 'models/db.model.php';
 
 $id = $params[1] ?? null;
 
@@ -23,7 +23,7 @@ if (!count($_POST) > 0) { // GET request
     if ($error == null) {
         db_update_post($title, $content, $id);
         header('Location: ' . ROOT . "post/$id");
-        exit();  
+        exit();
     }
 }
 
@@ -31,7 +31,7 @@ $content = slot('edit-post', [
     'id' => $id,
     'error' => $error,
     'title' => $post['title'] ?? $title,
-    'content' => $post['content'] ?? $content
+    'content' => $post['content'] ?? $content,
 ]);
 
-echo template('Редактировать пост | Блог на PHP', 'add-edit',  $content);
+echo template('Редактировать пост | Блог на PHP', 'add-edit', $content);

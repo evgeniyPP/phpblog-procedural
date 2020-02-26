@@ -1,7 +1,8 @@
 <?php
-include_once('error.model.php');
+include_once 'error.model.php';
 
-function validate_post($title, $content) {
+function validate_post($title, $content)
+{
     if ($title == '' || $content == '') {
         error('Заполните все поля');
     }
@@ -9,7 +10,8 @@ function validate_post($title, $content) {
     return true;
 }
 
-function validate_id($id) {
+function validate_id($id)
+{
     if ($id == null) {
         error('Нет id');
     } elseif (!preg_match('/^\d+$/', $id)) {
@@ -19,11 +21,12 @@ function validate_id($id) {
     return true;
 }
 
-function validate_controller($controller) {
-    if (!preg_match('/^[\w-]+$/', $controller) || 
+function validate_controller($controller)
+{
+    if (!preg_match('/^[\w-]+$/', $controller) ||
         !file_exists("controllers/$controller.php")) {
         error('Некорректный адрес');
     }
-    
+
     return true;
 }

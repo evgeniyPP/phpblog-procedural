@@ -1,5 +1,5 @@
 <?php
-include_once('models/db.model.php');
+include_once 'models/db.model.php';
 
 $is_auth = check_auth();
 $id = $params[1] ?? null;
@@ -13,7 +13,7 @@ check_error();
 $content = slot('post', [
     'is_auth' => $is_auth,
     'id' => $id,
-    'post' => $post
+    'post' => $post,
 ]);
 
 echo template($post['title'] . ' | Блог на PHP', 'post', $content);
